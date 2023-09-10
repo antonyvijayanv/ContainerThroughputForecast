@@ -1,0 +1,51 @@
+<form [formGroup]="form">
+    <ng-container *ngIf="pageType == 'prediction';else dashboard">
+        <mat-form-field appearance="outline" class="form-field">
+            <mat-label>From date</mat-label>
+            <input matInput [matDatepicker]="fromDatepicker" formControlName="startDate" required>
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="fromDatepicker"></mat-datepicker-toggle>
+            <mat-datepicker #fromDatepicker></mat-datepicker>
+        </mat-form-field>
+    
+        <mat-form-field appearance="outline" class="form-field">
+            <mat-label>To date</mat-label>
+            <input matInput [matDatepicker]="toDatepicker" formControlName="endDate" required>
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="toDatepicker"></mat-datepicker-toggle>
+            <mat-datepicker #toDatepicker></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="form-field">
+            <mat-label>Cargo Type</mat-label>
+            <mat-select formControlName="CargoType" required>
+                <mat-option *ngFor="let item of CargoTypeList" [value]="item?.value">{{item?.label}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </ng-container>
+   
+<ng-template #dashboard>
+    <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Cargo Year</mat-label>
+        <mat-select formControlName="cargoYear" required>
+            <mat-option *ngFor="let item of years" [value]="item">{{item}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Company</mat-label>
+        <mat-select formControlName="ucid">
+            <mat-option  value="001484">MSC</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+</ng-template>
+
+
+
+
+    <div>
+        <button class="search-button" mat-raised-button color="primary" (click)="onSearch()">Search</button>
+        <button class="clear-button" mat-raised-button color="warn" (click)="onClear()">Clear</button>
+    </div>
+</form>

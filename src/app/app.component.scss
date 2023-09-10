@@ -1,0 +1,18 @@
+.content-wrapper{
+    // height: 100vh !important;
+}
+.display-center{
+    display: flex;
+    justify-content: center;
+}
+.navbar{
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: calc(100% - 14rem);
+    z-index: 100;
+}
+.container-fluid{
+    margin-top: 100px;
+
+}
